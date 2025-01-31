@@ -9,6 +9,30 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+
+
+ 
+ /* Custom CSS */
+ @use './tailwind.css';
+ @use './assets/layout/layout.scss';
+ @use 'primeicons/primeicons.css';
+ @import "../node_modules/@flaticon/flaticon-uicons/css/all/all.css";
+ @import "../node_modules/@flaticon/flaticon-uicons/css/bold/all.css";
+ @import "../node_modules/@flaticon/flaticon-uicons/css/brands/all.css";
+ @import "../node_modules/@flaticon/flaticon-uicons/css/regular/all.css";
+ @import "../node_modules/@flaticon/flaticon-uicons/css/solid/all.css";
+ @import "../node_modules/@flaticon/flaticon-uicons/css/thin/rounded.css";
+ @import "../node_modules/@flaticon/flaticon-uicons/css/thin/straight.css";
+
+
+
+:root {
+    --ion-safe-area-top: 20px;
+    --ion-safe-area-bottom: 20px;
+    --ion-safe-area-left: 20px;
+    --ion-safe-area-right: 20px;
+ }
+
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
@@ -34,4 +58,10 @@
 
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+.fi {
+    display: flex;
+    align-items: center;
+}
