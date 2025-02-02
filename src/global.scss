@@ -16,6 +16,8 @@
  @use './tailwind.css';
  @use './assets/layout/layout.scss';
  @use 'primeicons/primeicons.css';
+ @use './assets/config/root';
+ @use './assets/config/theme';
  @import "../node_modules/@flaticon/flaticon-uicons/css/all/all.css";
  @import "../node_modules/@flaticon/flaticon-uicons/css/bold/all.css";
  @import "../node_modules/@flaticon/flaticon-uicons/css/brands/all.css";

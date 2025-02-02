@@ -7,7 +7,7 @@ import { ConfigMenu } from "./config.menu";
 @Component({
     selector: 'config-navigator',
     imports: [IonContent, ButtonModule, ConfigMenu],
-    styles: [`@use '../../../../assets/config/config.scss'`],
+    styleUrls: ['../../../../assets/config/_root.scss'],
     template: `<ion-content [fullscreen]="true">
     <main class="main-content">
         <section class="profile-detail">

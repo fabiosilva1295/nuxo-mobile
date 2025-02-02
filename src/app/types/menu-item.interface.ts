@@ -6,3 +6,12 @@ export interface MenuItemNav {
     children?: MenuItemNav[];
 
 }
+
+export interface FormItem {
+    label: string;
+    icon: string;
+    type: string;
+    formControlName: string;
+    placeholder?: string;
+    validators?: any[];
+  }

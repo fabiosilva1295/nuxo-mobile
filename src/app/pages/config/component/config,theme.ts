@@ -1,10 +1,14 @@
+import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonNavLink, IonToolbar } from '@ionic/angular/standalone';
+import { FormGroup } from "@angular/forms";
+import { IonContent, IonNavLink } from '@ionic/angular/standalone';
+import { LayoutService } from "src/app/layout/service/layout.service";
+import { FormItem } from '../../../types/menu-item.interface';
 
 @Component({
     selector: 'config-menu',
-    imports: [IonContent, IonNavLink, IonBackButton, IonButtons, IonToolbar, IonHeader],
-    styles: [`@use '../../../../assets/config/config.scss'`],
+    imports: [CommonModule,IonContent, IonNavLink],
+    styleUrls: ['../../../../assets/config/_theme.scss'],
     template: `
         <ion-content [fullscreen]="true">
             <header>
@@ -18,8 +22,22 @@ import { IonBackButton, IonButtons, IonContent, IonHeader, IonNavLink, IonToolba
                 <span>Temas e cores</span>
             </header>
             <main class="container">
-                
+                <div *ngFor="let item of items; index as i" class="item-container">
 
+                    <ng-container [ngSwitch]="item.type"] >
+
+                    </ng-container>
+
+                    <div class="label-icon">
+                        <i [ngClass]="item.icon"></i>
+                        <span class="label">
+                            {{item.label}}
+                        </span>
+                    </div>
+                    <div class="action-button">
+                        <i class="fi fi-tr-angle-small-right text-xl"></i>
+                    </div>
+                </div>
             </main>
         </ion-content>
     `
@@ -27,9 +45,27 @@ import { IonBackButton, IonButtons, IonContent, IonHeader, IonNavLink, IonToolba
 
 export class ConfigTheme implements OnInit {
 
+    public form!: FormGroup;
+    
+    public items: FormItem[] = [
+        {
+            label: 'Modo norturno',
+            icon: 'fi fi-tr-moon-stars',
+            type: 'switch',
+            formControlName: 'darkMode',
+            placeholder: 'Alterne entre modo claro e escuro',
+            validators: []
+        }
+    ]
 
-    constructor() {}
+    constructor(
+        private layoutService: LayoutService
+    ) {}
 
     ngOnInit(): void {
+    }
+
+    toggleDarkMode() {
+        this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
     }
 }
