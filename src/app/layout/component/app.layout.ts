@@ -13,7 +13,7 @@ import { AppTopbar } from './app.topbar';
     imports: [CommonModule, IonContent, IonToolbar, IonRouterOutlet, IonFooter,  AppTopbar, AppNav, RouterModule],
     template: `
         <ion-content [fullscreen]="true">
-            <ion-router-outlet></ion-router-outlet>  
+            <ion-router-outlet mode="ios"></ion-router-outlet>  
         </ion-content>
 
         <ion-footer class="ion-no-border">
