@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Renderer2, ViewChild } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { IonContent, IonFooter, IonRouterOutlet, IonToolbar } from '@ionic/angular/standalone';
+import { IonContent, IonFooter, IonRouterOutlet } from '@ionic/angular/standalone';
 import { filter, Subscription } from 'rxjs';
 import { LayoutService } from '../service/layout.service';
 import { AppNav } from './app.nav';
@@ -10,7 +10,7 @@ import { AppTopbar } from './app.topbar';
 @Component({
     selector: 'app-layout',
     standalone: true,
-    imports: [CommonModule, IonContent, IonToolbar, IonRouterOutlet, IonFooter,  AppTopbar, AppNav, RouterModule],
+    imports: [CommonModule, IonContent, IonRouterOutlet, IonFooter,  AppNav, RouterModule],
     template: `
         <ion-content [fullscreen]="true">
             <ion-router-outlet mode="ios"></ion-router-outlet>  

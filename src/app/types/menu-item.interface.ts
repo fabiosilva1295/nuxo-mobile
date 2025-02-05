@@ -13,5 +13,6 @@ export interface FormItem {
     type: string;
     formControlName: string;
     placeholder?: string;
+    callback?: VoidFunction;
     validators?: any[];
   }

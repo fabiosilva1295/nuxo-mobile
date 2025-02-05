@@ -1,28 +1,53 @@
+:host {
 
-header {
-    display: flex;
-    padding: 1rem;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 2rem 1.5rem;
-    
-}
+    header {
+        display: flex;
+        padding: 1rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 2rem 1.5rem;
+        padding-top: 3rem;
+        background: var(--surface-ground);
+        color: var(--text-color);
 
-.back-button {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 1rem;
 
-    span {
-        font-size: 1rem;
     }
-}
+
+    .back-button {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+
+        span {
+            font-size: 1rem;
+        }
+    }
 
 
-.container {
-    display: flex;
-    flex-direction: column;
-    padding: 1.5rem;
+    .container {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        background: var(--surface-ground);
+        min-height: calc(100% - 90px);
+    }
+
+    .group-container {
+        width: 100%;
+        background: var(--surface-overlay);
+        padding: 1rem;
+        border-radius: 12px;
+    }
+
+    .item-container, .label-icon {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        padding: 0.3rem 0.2rem;
+        color: var(--text-color);
+
+    }
 }
