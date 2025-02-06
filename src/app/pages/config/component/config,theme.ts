@@ -1,9 +1,9 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, ReactiveFormsModule } from "@angular/forms";
+import { FormControl, FormGroup, ReactiveFormsModule } from "@angular/forms";
 import { IonContent, IonNavLink } from '@ionic/angular/standalone';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
-import { LayoutService } from "src/app/layout/service/layout.service";
+import { ThemeService } from "src/app/services/theme.service";
 import { FormItem } from '../../../types/menu-item.interface';
 
 @Component({
@@ -44,7 +44,7 @@ import { FormItem } from '../../../types/menu-item.interface';
 
 export class ConfigTheme implements OnInit {
 
-    public form!: FormGroup;
+    public form: FormGroup = new FormGroup({});
     
     public items: FormItem[][] = [
         [
@@ -52,8 +52,22 @@ export class ConfigTheme implements OnInit {
                 label: 'Modo norturno',
                 icon: 'fi fi-tr-moon-stars',
                 type: 'switch',
-                formControlName: 'darkMode',
+                formControlName: 'darkTheme',
                 placeholder: 'Alterne entre modo claro e escuro',
+                typeValue: 'bool',
+                callback: () => this.toggleDarkMode(),
+                validators: []
+            }
+        ],
+
+        [
+            {
+                label: 'Modo norturno',
+                icon: 'fi fi-tr-moon-stars',
+                type: 'switch',
+                formControlName: 'darkTheme',
+                placeholder: 'Alterne entre modo claro e escuro',
+                typeValue: 'bool',
                 callback: () => this.toggleDarkMode(),
                 validators: []
             }
@@ -61,13 +75,21 @@ export class ConfigTheme implements OnInit {
     ]
 
     constructor(
-        private layoutService: LayoutService
+        private themeService: ThemeService
     ) {}
 
     ngOnInit(): void {
+        this.items.forEach(group =>  {
+            group.forEach(item => {
+                const defaultValue  = item.typeValue === 'bool' ? false : '';
+                this.form.addControl(item.formControlName, new FormControl(defaultValue, item.validators || [] ))
+            })
+        })
+
+        this.form.patchValue(this.themeService.layoutConfig())
     }
 
     toggleDarkMode() {
-        this.layoutService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
+        this.themeService.layoutConfig.update((state) => ({ ...state, darkTheme: !state.darkTheme }));
     }
 }

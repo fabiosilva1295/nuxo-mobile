@@ -77,7 +77,6 @@ export class AppNav implements OnInit {
 
     protected updatedRouter(url: string): void {
         this.items.forEach(item => item.expanded = item.routerLink.includes(url));
-        console.log(this.items)
     }
 
     protected getIcon(isExpanded: boolean, icon?: string): string {

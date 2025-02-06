@@ -1,13 +1,8 @@
 import { Injectable, computed, effect, signal } from '@angular/core';
 import { Subject } from 'rxjs';
+import { layoutConfig } from 'src/app/types/theme-config.interface';
 
-export interface layoutConfig {
-    preset?: string;
-    primary?: string;
-    surface?: string | undefined | null;
-    darkTheme?: boolean;
-    menuMode?: string;
-}
+
 
 interface LayoutState {
     staticMenuDesktopInactive?: boolean;
